@@ -1,48 +1,40 @@
 # CorporationX
 
-Репозиторий для всего проекта. Использует git submodule, чтобы включить все остальные сервисы
+![URL](https://pbs.twimg.com/media/FuE_T4EWwAIgxzw.jpg:large)
 
-# Как начать работу?
+CorporationX (CorpX) is a social network tailored for management and fundraising startups, offering centralized communication and collaboration tools. The platform provides real-time notifications, data-driven analytics, and efficient link management, enabling seamless business operations. With features like an infinite-availability news feed, activity achievements, and a dual message payment system, CorpX drives productivity for its users.
 
-`git clone --recurse-submodules https://github.com/CorporationX/CorporationX`
+CorpX enhances startup fundraising by facilitating seamless team coordination and data-driven decision-making. Its real-time alerts keep users informed of key updates across multiple platforms, while its powerful dashboard offers a comprehensive view of performance metrics. By integrating flexible payment options and an intuitive URL shortener, CorpX streamlines communication and resource management.
 
-# Как поднять БД и другие инструменты локально?
+## How to Get Started
 
-Следуем инструкциям в README в разделе `infra`. Это отдельный репозиторий, который содержит в себе все инфраструктурные компоненты (БД, Redis, Docker Compose и пр.)
+`git clone --recurse-submodules https://github.com/UrmatBolotbek/CorporationX.git`
 
-# Как вести разработку?
+## Microservices
 
-Каждая папка в этом репозитории - это отдельный подрепозиторий, который тоже есть на GitHub. Т.е. user_service - это обычный Git-репозиторий, который попросту включен в большой репозиторий CorporationX в качестве подрепозитория. 
+* [**User Service**](https://github.com/UrmatBolotbek/user_service.git) - A comprehensive service managing user information, authentication, and authorization.
+* [**URL-Shortener Service**](https://github.com/UrmatBolotbek/url_shortener_service.git) - Service to convert long URLS with 30+ symbols to short URL with 4+ symbols
+* [**Project Service**](https://github.com/UrmatBolotbek/project_service.git) - Handles the creation, management, and collaboration of various projects.
+* [**Post Service**](https://github.com/UrmatBolotbek/post_service.git) - Facilitates the creation and management of user-generated posts and content.
+* [**Payment Service**](https://github.com/UrmatBolotbek/payment_service.git) - A web system for handling and monitoring financial transactions and book checkouts.
+* [**Account Service**](https://github.com/UrmatBolotbek/account_service.git) - Main service where user controll other services.
+* [**Analytics Service**](https://github.com/UrmatBolotbek/analytics_service.git) - Provides analytical insights and data reporting for other services.
+* [**Achievement Service**](https://github.com/UrmatBolotbek/achievement_service.git) - Manages and tracks user achievements and milestones.
+* [**Notification Service**](https://github.com/UrmatBolotbek/notification_service.git) - Handles the delivery of various notifications to users via different channels.
+* [**Infra**](https://github.com/UrmatBolotbek/infra.git) - Microservices configuration service for developers.
 
-CorporationX репозиторий существует лишь для удобства: можно сразу склонировать все необходимые сервисы всего одной командой `git clone`, которая указана выше.
+## Features
 
-Каждый подрепозиторий представляет собой отдельный сервис (Java-приложение) в экосистеме CorporationX. Например, user_service - это приложение, которое содержит в себе логику работы с пользователями, project_service - логику работы с проектами и т.д. 
-Соответственно в зависимости от конкретной задачи вы будете работать либо в том, либо в другом сервисе. По сути просто писать там код, как в обычном проекте в IDEA.
+- **Real-time Notifications** (SMS, Email, Telegram)
+- **Infinite-High Available News Feed**
+- **User Dashboard Page**
+- **Activity Analytics**
+- **Cloud Integration**
+- **Dual Message Payment System**
+- **URL Link Shortener**
+- **API Integration**
+- **Activity Achievements**
 
-Поэтому:
-1. Выкачиваем весь проект CorporationX, используя команду клонирования выше
-2. Из конкретной задачи в Jira определяем, в каком сервисе нужно вести разработку.
-3. Открываем в IDEA папку с этим сервисом
-4. Работаемс!
+## Technologies Used
 
-# Как создавать PR?
-
-Каждая команда будет иметь свою собственную master ветку в общем репозитории. Например, команда unicorn имеет ветку `master-unicorn`, которая содержит весь стабильный код этой команды в определенном сервисе, и именно туда участники должны создавать PR-ы.
-
-Поэтому:
-
-1. Получаем задачу в Jira
-2. Определяем, в каком сервисе будем вести разработку
-3. Открываем этот сервис в IDEA
-4. Переключаемся на `master`-ветку СВОЕЙ команды. ЭТО ОЧЕНЬ ВАЖНО. Если вы только начинаете разработку новой задачи, то убедитесь, что переключились на ветку `master-unicorn` или `master-kraken` в зависимости от вашей команды, перед тем, как создать еще одну ветку.
-5. Из данной ветки создаем ветку для вашей конкретной задачи по шаблону: `feature-{номер_задачи}` или `bugfix-{номер_задачи}` в зависимости от того, делаете ли вы новую фичу или чините некоторый баг.
-6. Именно в этой ветке ведем всю разработку
-7. Когда разработка завершена создаем PR из этой ветки в master-ветку вашей команды, из которой изначально и создавали рабочую ветку. Убедитесь, что всегда создаете PR в правильную ветку именно для вашей команды.
-8. Получам аппрув от техлида.
-9. Мержируемся!
-
-# Тесты
-
-Каждый PR в этом репозитории обязан содержать unit-тесты на всю вашу логику. PR-ы без unit-тестов будут отправлятся сразу обратно в работу без частичной проверки. Когда команда добавит CI пайплайны на GitHub, то PR-ы с упавшими тестами, будут также сразу отправляться обратно в работу без частичной проверки. 
-
-Ваш PR должен быть полностью зеленым и покрыт тестами, чтобы получить ревью. Это обязательное требование.
+- Java, Spring Framework, Kafka, Docker, Redis, RabbitMQ, Amazon S3 Cloud, CI/CD, Hibernate, Multithreading, Liquibase,REST API
